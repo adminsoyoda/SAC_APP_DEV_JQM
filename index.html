@@ -21,10 +21,13 @@
 <script type="text/javascript">
     $(document).ready(function(){  
        alert("aqui1");
-       app.initialize(function(){});      
+       /*app.initialize(function(){
+
+       });*/            
        alert("aqui2");
        contentPage('pages/login.html');             
-       app.onDeviceReady();      
+       app.onDeviceReady();              
+       alert("aqui3");
     });
     
     $(document).on( "click", ".show-page-loading-msg", function() {
