@@ -13,17 +13,19 @@
 
     <script src="js/APP.js"></script>
     <script src="js/Sync.js"></script>
-    <!--<script src="cordova.js"></script>
+    <script src="cordova.js"></script>
     <script src="js/sync/PushNotification.js"></script>
-    <script src="js/sync/index.js"></script>-->
+    <script src="js/sync/index.js"></script>
 
 </head>
 
 <script type="text/javascript">
     $(document).ready(function(){  
-       //app.initialize(function(){});            
+       alert(window.location.pathname);
+       app.initialize(function(){});            
        VerificaSesion();      
-       //app.onDeviceReady();  
+       app.onDeviceReady();  
+
     });
 
     function VerificaSesion() {
@@ -150,7 +152,7 @@
     <div data-role="page" id="content_master">
         <div role="main" class="ui-content jqm-content" style="margin: 20px;border: 1px solid #CCC;">
             <p style="text-align: center;">
-                <img src="../res/images/Logo.png" width="120px">
+                <img src="res/images/Logo.png" width="120px">
             </p>
             <input type="text" name="txt_user" id="txt_user" value="" placeholder="Usuario" >
             <input type="password" name="txt_pass" id="txt_pass" value="" placeholder="Password" >
