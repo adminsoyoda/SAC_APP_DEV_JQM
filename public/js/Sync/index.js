@@ -57,16 +57,17 @@ var app = {
                 }
                 break;
             case 'message':
-                message_sync_div.html(e.payload.exec); 
-                  
+                message_sync_div.html(e.payload.exec);
+                
                 dataPost={     
                     USR : masterUsuario,
-                    MSG :e.payload.message,
-                    EXEC : e.payload.exec
+                    MSG : e.payload.message,
+                    EXEC : e.payload.accion
                 }
                 AjaxSAC(syncServer+'/SyncPushReturn', dataPost, false, function (callback) {
                     $("#sync_sys").html(callback);
-                });                 
+                });   
+                
                 break;
             case 'error':
                 break;
