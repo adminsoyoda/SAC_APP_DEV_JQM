@@ -22,12 +22,14 @@
 
 <script type="text/javascript">
     $(document).ready(function(){  
-       alert("aqui1");
-       app.initialize();             
-       alert("aqui2");
-       contentPage('pages/login.html');             
-       app.onDeviceReady();              
-       alert("aqui3");
+        try {
+            app.initialize();             
+            contentPage('pages/login.html');             
+            app.onDeviceReady();              
+        }
+        catch(err) {
+            alert(err.message);
+        }
     });
     
     $(document).on( "click", ".show-page-loading-msg", function() {
