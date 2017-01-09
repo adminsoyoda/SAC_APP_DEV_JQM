@@ -69,11 +69,11 @@
 -->
 
 <!-- Define app icon for each platform. -->
-<icon src="public/images/Logo.png" width="72" height="72" />
-<icon src="public/images/Logo.png" width="48" height="48" />
-<icon src="public/images/Logo.png" width="36" height="36" />
+<icon src="img/Logo.png" width="72" height="72" />
+<icon src="img/Logo.png" width="48" height="48" />
+<icon src="img/Logo.png" width="36" height="36" />
 
-<!-- Define app splash screen for each platform. -->
+<!-- Define app splash screen for each platform. 
 <gap:splash src="res/screen/android/screen-ldpi-portrait.png"       gap:platform="android" gap:qualifier="port-ldpi" />
 <gap:splash src="res/screen/android/screen-mdpi-portrait.png"       gap:platform="android" gap:qualifier="port-mdpi" />
 <gap:splash src="res/screen/android/screen-hdpi-portrait.png"       gap:platform="android" gap:qualifier="port-hdpi" />
@@ -85,7 +85,7 @@
 <gap:splash src="res/screen/ios/screen-ipad-portrait.png"           gap:platform="ios"     width="768" height="1024" />
 <gap:splash src="res/screen/ios/screen-ipad-landscape.png"          gap:platform="ios"     width="1024" height="768" />
 <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
-
+-->
 <gap:config-file platform="ios" parent="CFBundleShortVersionString">
 <string>100</string>
 </gap:config-file>
