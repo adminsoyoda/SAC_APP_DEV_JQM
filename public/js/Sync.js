@@ -73,13 +73,13 @@ function BDActualizacionObj(sqlCommand,Obj) {
 
 
 function SyncExeReady(CODIGOINTERNO,TIPOSYNC, RETORNO) {
-    $("#loader_sys").show();
+    $("#loader_sys_btn_show").click();
     var dataPost = {
         CODIGOINTERNO: CODIGOINTERNO
     };
     AjaxSAC(syncServer + "/" + TIPOSYNC, dataPost, true, function (callback) {
         $("#sync_sys").html(callback);
-        $("#loader_sys").hide();
+        $("#loader_sys_btn_hide").click();
         RETORNO("OK");
         return true;
     });
@@ -87,7 +87,7 @@ function SyncExeReady(CODIGOINTERNO,TIPOSYNC, RETORNO) {
                     
 
 function SyncExe(CODIGOINTERNO,INISYNC, RETORNO) {
-    $("#loader_sys").show();
+    $("#loader_sys_btn_show").click();
     var dataPost = {
         CODIGOINTERNO: CODIGOINTERNO,
         INISYNC:INISYNC,
@@ -95,7 +95,7 @@ function SyncExe(CODIGOINTERNO,INISYNC, RETORNO) {
     };
     AjaxSAC(syncServer + "/SyncExe", dataPost, true, function (callback) {
         $("#sync_sys").html(callback);
-        $("#loader_sys").hide();
+        $("#loader_sys_btn_hide").click();
         RETORNO("OK");
         return true;
     });
@@ -148,7 +148,7 @@ function SyncExeSendInfo(sqlCommand,table,loader) {
 
 
 function SyncApp_Web(TableSelect, TableAction, TableFinAction, ColumType, detailColum,FieldsUpdate,FielsdExist,alerta,msg,loader){
-    if (loader) { $("#loader_sys").show(); }
+    if (loader) { $("#loader_sys_btn_show").click(); }
     index=0;
     strAction="";
 	regTable = TableSelect.split("@@");
@@ -220,7 +220,7 @@ function SyncAppWebExec(alerta,msg,loader){
             USR : masterUsuario
         }
         AjaxSAC(syncServer+'/SyncAppWebExe', dataPost, loader, function (callback) {
-            if (loader) { $("#loader_sys").show(); }
+            if (loader) { $("#loader_sys_btn_show").click(); }
 
             if(alerta){
                 alert(callback);
@@ -239,7 +239,7 @@ function SyncAppWebExec(alerta,msg,loader){
             if(msg)
             {
             	alert(regcallbackAll[1]);
-                $("#loader_sys").hide();
+                $("#loader_sys_btn_hide").click();
                 $("#sync_sys").html("");
             }
         });
