@@ -2,10 +2,10 @@
 
 <script>
 
-    $(document).ready(function () {
+    (function() {
         alert(syncServer);
         $("#URL_SINCRONIZAR").val(syncServer);
-    });
+    })();
 
     function Test() {
         AjaxSAC(syncServer, "", true, function (callback) {
