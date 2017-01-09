@@ -4,15 +4,15 @@
     <title>SAC Ventas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="css/jQueryMobile/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
-    <link href="css/jQueryMobile/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" />
-    <link href="css/jQueryMobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="public/css/jQueryMobile/jquery.mobile.icons-1.4.5.min.css" rel="stylesheet" />
+    <link href="public/css/jQueryMobile/jquery.mobile.structure-1.4.5.min.css" rel="stylesheet" />
+    <link href="public/css/jQueryMobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
 
-    <script src="js/jQuery/jquery.js"></script>
-    <script src="js/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+    <script src="public/js/jQuery/jquery.js"></script>
+    <script src="public/js/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
 
-    <script src="js/APP.js"></script>
-    <script src="js/Sync.js"></script>
+    <script src="public/js/APP.js"></script>
+    <script src="public/js/Sync.js"></script>
     <script src="cordova.js"></script>
     <script src="js/sync/PushNotification.js"></script>
     <script src="js/sync/index.js"></script>
@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){  
-       alert(window.location.pathname);
+       
        app.initialize(function(){});            
        VerificaSesion();      
        app.onDeviceReady();  
@@ -97,7 +97,7 @@
 
         AjaxSAC(syncServer + "/TestPassConfig", "", true, function (callback) {
             if (callback == $("#txt_pass_config").val()) {
-                contentPage('res/pages/configuracion.html');
+                contentPage('pages/configuracion.html');
             } else {
                 alert("Error en Credenciales de acceso...");
             }
@@ -152,7 +152,7 @@
     <div data-role="page" id="content_master">
         <div role="main" class="ui-content jqm-content" style="margin: 20px;border: 1px solid #CCC;">
             <p style="text-align: center;">
-                <img src="res/images/Logo.png" width="120px">
+                <img src="public/img/Logo.png" width="120px">
             </p>
             <input type="text" name="txt_user" id="txt_user" value="" placeholder="Usuario" >
             <input type="password" name="txt_pass" id="txt_pass" value="" placeholder="Password" >

@@ -15,8 +15,27 @@
   Desarrollo Soyoda
 </author>
 
+  <!--<feature name="Geolocation">
+    <param name="android-package" value="org.apache.cordova.GeoBroker" />
+  </feature>-->
+  
+  <!--
+    If you do not want any permissions to be added to your app, add the
+    following tag to your config.xml; you will still have the INTERNET
+    permission on your app, which PhoneGap requires.
+
+<preference name="permissions" value="none"/>
+-->
+  
+<!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+<!--
+    Define a specific version of PhoneGap to build into your app.
+    <preference name="phonegap-version"       value="3.5.0" />
+-->
+
 <!-- Plugins -->
 
+<!-- Core plugins -->
   <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
   <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1"/>
   <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0"/>
@@ -41,7 +60,8 @@
   <plugin spec="https://github.com/phonegap-build/PushPlugin.git" source="git"/>
 
   <plugin name="cordova.plugins.diagnostic" source="npm" version="2.2.4" /><!--verificar estados de los dispositivos-->
-  <plugin name="plugin_open_gps" source="npm" version="1.1.8" />
+  <plugin name="plugin_open_gps" source="npm" version="1.1.8" /><!--verificar estados de los dispositivos por soyoda-->
+<!--<gap:plugin name="cordova-plugin-mauron85-background-geolocation-phonegapbuild" version="0.7.3" source="npm" />-->
 
 
 <!-- Third party plugins -->
@@ -50,9 +70,12 @@
     <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 -->
 
-<icon src="img/Logo.png" width="72" height="72" />
-<icon src="img/Logo.png" width="48" height="48" />
-<icon src="img/Logo.png" width="36" height="36" />
+<!-- Define app icon for each platform. -->
+<icon src="public/img/Logo.png" width="72" height="72" />
+<icon src="public/img/Logo.png" width="48" height="48" />
+<icon src="public/img/Logo.png" width="36" height="36" />
+
+<!-- Define app splash screen for each platform. -->
 
 
 <gap:config-file platform="ios" parent="CFBundleShortVersionString">
