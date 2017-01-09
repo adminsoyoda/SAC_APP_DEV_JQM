@@ -10,12 +10,14 @@
 
     <script src="public/js/jQuery/jquery.js"></script>
     <script src="public/js/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script src="cordova.js"></script>
+    <script src="public/js/sync/index.js"></script>    
+    <script src="public/js/sync/PushNotification.js"></script>
 
     <script src="public/js/APP.js"></script>
     <script src="public/js/Sync.js"></script>
-    <script src="cordova.js"></script>
-    <script src="public/js/sync/PushNotification.js"></script>
-    <script src="public/js/sync/index.js"></script>
+
     <script src="public/js/gps.js"></script>
     <script src="public/js/gpsController.js"></script>
 </head>
@@ -23,9 +25,9 @@
 <script type="text/javascript">
     $(document).ready(function(){  
         try {
-            app.initialize();             
+            app.initialize();  
+            app.onDeviceReady();            
             contentPage('pages/login.html');             
-            app.onDeviceReady();              
         }
         catch(err) {
             alert(err.message);
