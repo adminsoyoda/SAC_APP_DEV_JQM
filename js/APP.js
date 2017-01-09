@@ -5,10 +5,11 @@ var masterUsuario = "";
 //Contenedor General
 function contentPage(ContenedorGlobal) {
     $("#content_master").hide();
-    $("#loader_sys").show();
     $("#content_master").load(ContenedorGlobal, function () {
-        setTimeout("$('#content_master').show(200);", 500); 
-        setTimeout("$('#loader_sys').hide();", 500);
+        setTimeout(function(){
+            $('#content_master').show(200);  
+            $( "div[data-role=page]" ).page( "destroy" ).page();
+        }, 500); 
     });
 }
 

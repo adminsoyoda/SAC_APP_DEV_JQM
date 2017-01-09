@@ -13,99 +13,95 @@
 
     <script src="js/APP.js"></script>
     <script src="js/Sync.js"></script>
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>
     <script src="js/sync/PushNotification.js"></script>
-    <script src="js/sync/index.js"></script>
+    <script src="js/sync/index.js"></script>-->
 
 </head>
 
-    <script type="text/javascript">
-        $(document).ready(function(){  
-          app.initialize(function(){
+<script type="text/javascript">
+    $(document).ready(function(){  
+       //app.initialize(function(){});            
+       VerificaSesion();      
+       //app.onDeviceReady();  
+    });
 
-           });            
-           VerificaSesion();      
-           app.onDeviceReady();  
-        });
+    function VerificaSesion() {
+        BDConsulta("SELECT COUNT(*) CONT FROM sqlite_master WHERE type='table' AND name='APP_USUARIO';", function (obj) {
+            if (obj.CONT != 0) {
+                BDConsulta("SELECT COUNT(*) CONT FROM APP_USUARIO", function (obj) {
+                    if (obj.CONT > 0) {
+                        BDConsulta("SELECT * FROM APP_USUARIO", function (obj) {
+                            if (obj.ACTIVO == 'A') {
+                                masterUsuario=obj.IDUSERWEB;
 
-        function VerificaSesion() {
-            BDConsulta("SELECT COUNT(*) CONT FROM sqlite_master WHERE type='table' AND name='APP_USUARIO';", function (obj) {
-                if (obj.CONT != 0) {
-                    BDConsulta("SELECT COUNT(*) CONT FROM APP_USUARIO", function (obj) {
-                        if (obj.CONT > 0) {
-                            BDConsulta("SELECT * FROM APP_USUARIO", function (obj) {
-                                if (obj.ACTIVO == 'A') {
-                                    masterUsuario=obj.IDUSERWEB;
-
-                                    BDConsulta("SELECT * FROM APP_SERVER WHERE ESTADO = 'A' ", function (obj) {
-                                        syncServer = obj.SERVER;
-                                    });
-                                }
-                            });
-                        } 
-                    });
-                } else {
-                    alert("Por favor Realizar la Configuracion de la aplicacion...");
-                }
-            });
-        }
-
-        function LoginEnter(evento) {
-            var key = validaEvento(evento);
-            if (key == 13) { Login(); } else { return true; }
-        }
-
-        function Login() {
-            if ($("#txt_user").val() == '') { alert("Ingresar Usuario...");  $("#txt_user").focus(); return true; }
-            if ($("#txt_pass").val() == '') { alert("Ingresar Password..."); $("#txt_pass").focus(); return true; }
-
-            BDConsultaOBJ("SELECT * FROM APP_USUARIO WHERE USUARIO='" + $("#txt_user").val() + "' AND PASS='" + $("#txt_pass").val() + "' ", function (obj) {
-                if (obj.rows.length > 0) {
-                    for (var i = 0; i < obj.rows.length; i++) { var row = obj.rows.item(i);  masterUsuario=row.IDUSERWEB}
-                    BDActualizacion("UPDATE APP_USUARIO SET ACTIVO='A'");
-                } else {
-                    alert("Error en Credenciales...");
-                    $("#txt_user").focus();
-                }
-            });
-        }
-
-        function UrlEvent(evento) {
-            var key = validaEvento(evento);
-             if (key == 13) { $("#txt_pass_config").focus(); } else { return true; }
-        }
-
-        function LoginConciliacion(evento) {
-            var key = validaEvento(evento);
-            if (key == 13) { entrarConfig(); } else { return true; }
-        }
-
-        function configuracion() {
-            $("#AppSegPassConfig").show(100);
-            $("#AppButtonConfig").hide();
-            $("#txt_url_config").focus();
-        }
-
-        function entrarConfig() {
-            if($("#txt_url_config").val().replace("http://","").trim() == "" )
-            {
-                alert("Debe de ingresar la url del servidor!");
-                return;
+                                BDConsulta("SELECT * FROM APP_SERVER WHERE ESTADO = 'A' ", function (obj) {
+                                    syncServer = obj.SERVER;
+                                });
+                            }
+                        });
+                    } 
+                });
+            } else {
+                alert("Por favor Realizar la Configuracion de la aplicacion...");
             }
+        });
+    }
 
-            syncServer = $("#txt_url_config").val();
+    function LoginEnter(evento) {
+        var key = validaEvento(evento);
+        if (key == 13) { Login(); } else { return true; }
+    }
 
-            AjaxSAC(syncServer + "/TestPassConfig", "", true, function (callback) {
-                if (callback == $("#txt_pass_config").val()) {
-                    contentPage('res/pages/configuracion.html');
-                } else {
-                    alert("Error en Credenciales de acceso...");
-                }
-            });
+    function Login() {
+        if ($("#txt_user").val() == '') { alert("Ingresar Usuario...");  $("#txt_user").focus(); return true; }
+        if ($("#txt_pass").val() == '') { alert("Ingresar Password..."); $("#txt_pass").focus(); return true; }
+
+        BDConsultaOBJ("SELECT * FROM APP_USUARIO WHERE USUARIO='" + $("#txt_user").val() + "' AND PASS='" + $("#txt_pass").val() + "' ", function (obj) {
+            if (obj.rows.length > 0) {
+                for (var i = 0; i < obj.rows.length; i++) { var row = obj.rows.item(i);  masterUsuario=row.IDUSERWEB}
+                BDActualizacion("UPDATE APP_USUARIO SET ACTIVO='A'");
+            } else {
+                alert("Error en Credenciales...");
+                $("#txt_user").focus();
+            }
+        });
+    }
+
+    function UrlEvent(evento) {
+        var key = validaEvento(evento);
+         if (key == 13) { $("#txt_pass_config").focus(); } else { return true; }
+    }
+
+    function LoginConciliacion(evento) {
+        var key = validaEvento(evento);
+        if (key == 13) { entrarConfig(); } else { return true; }
+    }
+
+    function configuracion() {
+        $("#AppSegPassConfig").show(100);
+        $("#AppButtonConfig").hide();
+        $("#txt_url_config").focus();
+    }
+
+    function entrarConfig() {
+        if($("#txt_url_config").val().replace("http://","").trim() == "" )
+        {
+            alert("Debe de ingresar la url del servidor!");
+            return;
         }
 
-    </script>
+        syncServer = $("#txt_url_config").val();
 
+        AjaxSAC(syncServer + "/TestPassConfig", "", true, function (callback) {
+            if (callback == $("#txt_pass_config").val()) {
+                contentPage('res/pages/configuracion.html');
+            } else {
+                alert("Error en Credenciales de acceso...");
+            }
+        });
+    }
+</script>
 
 <style type="text/css">
     
@@ -129,6 +125,25 @@
         margin-top: 30px !important;
     }
 
+    .cus-ele-pad-top-15
+    {
+        padding-top: 15px !important;
+    }
+
+    .cus-ele-pad-top-10
+    {
+        padding-top: 10px !important;
+    }
+
+    .cus-sin-pad-right
+    {
+        padding-right: 0px !important;
+    }
+
+    .cus-sin-pad-left
+    {
+        padding-left: 0px !important;
+    }
 </style>
 
 <body>
@@ -149,7 +164,6 @@
                 <br />
                 <a class="ui-btn ui-btn-icon-right cus-pri-ele ui-icon-gear ui-btn-icon-left" onclick="entrarConfig();">Entrar a Configuracion Inicial del Sistema</a>
             </div>
-
         </div>
     </div>
 </body>

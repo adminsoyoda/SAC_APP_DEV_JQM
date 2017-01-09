@@ -3,6 +3,7 @@
 <script>
 
     $(document).ready(function () {
+        console.log(syncServer)
         $("#URL_SINCRONIZAR").val(syncServer);
     });
 
@@ -65,31 +66,41 @@
             }
         });
     }
-
 </script>
 
 <div role="main" class="ui-content jqm-content" style="margin: 20px;border: 1px solid #CCC;">
 
-    <div class="btn-group" role="group" aria-label="..."><img src="img/Logo.png" style='width:30%; padding-bottom:10px;'></div>
-    <div class="btn-group" role="group" aria-label="..." style="text-align:right; font-size:14px;">
-        <strong style='font-size:15px; color:#005FAA; text-decoration:underline;'>Configuraci&oacute;n Inicial de Usuario</strong>
+    <div class="ui-field-contain">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <div class="ui-bar" style="height:60px">
+                    <div><img src="img/Logo.png" style='width:50%; padding-bottom:10px;'></div>
+                </div>
+            </div>
+            <div class="ui-block-b">
+                <div class="ui-bar" style="height:60px">
+                    <div style="text-align:right; font-size:14px" class="cus-ele-pad-top-15">
+                        <strong style='font-size:15px; color:#005FAA; text-decoration:underline;'>Configuraci&oacute;n Inicial de Usuario</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr />
 
     <div class="ui-grid-a">
         <div class="ui-block-a">
-            <div class="ui-bar ui-bar-a" style="height:60px">
-                <input type="text" name="URL_SINCRONIZAR" id="URL_SINCRONIZAR" >
+            <div class="cus-ele-pad-top-10" style="height:60px">
+                <input type="text" id="URL_SINCRONIZAR"/>
             </div>
         </div>
         <div class="ui-block-b">
-            <div class="ui-bar ui-bar-a" style="height:60px">
+            <div class="ui-bar cus-sin-pad-right" style="height:60px">
                 <a class="ui-btn cus-pri-ele" data-inline="true" onclick="Test()">Test...</a>
             </div>
         </div>
-    </div><!-- /grid-a -->
+    </div>
 
-    <input type="hidden" class="form-control" aria-label="..." disabled="disabled" id='CODIGOINTERNO'>
+    <input type="hidden" class="form-control" aria-label="..." disabled="disabled" id='CODIGOINTERNO'/>
 
     <br>
     <div class="ui-field-contain">
@@ -100,12 +111,16 @@
     
     <br>
     
-    <input type="text" name="IDGOOGLE" id="IDGOOGLE" value="" placeholder="ID GOOGLE" >
+    <input type="text" name="IDGOOGLE" id="IDGOOGLE" value="" placeholder="ID GOOGLE" disabled>
     
     <br>
-    <input type="checkbox" name="ACEPTADISPOSE" id="ACEPTADISPOSE" checked disabled>
-    <label for="chck-rememberme">Carga Inicial de datos...</label>
     
+    <form>
+        <label>
+            <input id="ACEPTADISPOSE" type="checkbox" checked disabled>Carga Inicial de datos...
+        </label>
+    </form>
+
     <a class="ui-btn cus-pri-ele" data-inline="true">Guardar</a><hr>
     
     <div id="NEWELEMENT">
