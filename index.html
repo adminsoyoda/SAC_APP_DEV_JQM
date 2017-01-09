@@ -20,7 +20,9 @@
 
 <script type="text/javascript">
     $(document).ready(function(){  
-       app.initialize(function(){});            
+       alert("aqui1");
+       app.initialize(function(){});      
+       alert("aqui2");
        contentPage('pages/login.html');             
        app.onDeviceReady();      
     });
@@ -114,6 +116,11 @@
     .cus-sin-pad-left
     {
         padding-left: 0px !important;
+    }
+
+    .cus-display-none
+    {
+        display: none;
     }
 </style>
 
