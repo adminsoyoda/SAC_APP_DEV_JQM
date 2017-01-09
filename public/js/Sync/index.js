@@ -1,11 +1,9 @@
 var registerId="";//variable contenedora de id
 var app = {
     // Application Constructor 
-    initialize: function (callback) {
+    initialize: function() {
         this.bindEvents();
-
-        callback();
-    },    
+    },
     // Bind Event Listeners 
     // 
     // Bind any events that are required on startup. Common events are: 
