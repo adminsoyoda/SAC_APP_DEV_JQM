@@ -26,9 +26,10 @@
 
     $(document).ready(function(){  
         try {
-            checkConnection();
-            app.initialize();  
-            app.onDeviceReady();            
+            
+            //app.initialize();  
+            app.onDeviceReady();      
+            checkConnection();      
             contentPage('pages/login.html');             
         }
         catch(err) {
